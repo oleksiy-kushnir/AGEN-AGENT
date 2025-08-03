@@ -1,24 +1,39 @@
-console.clear
+console.clear()
 
-// Цей код виконається після повного завантаження DOM (HTML)
 document.addEventListener("DOMContentLoaded", () => {
-    // Необов'язковий, але корисний для перевірки, що DOM готовий
-    console.log("DOM повністю завантажений");
+  console.log("DOM повністю завантажений");
+
+  const loader = document.querySelector(".loader");     // додаємо
+  const container = document.querySelector(".container"); // додаємо
+
+  setTimeout(() => {
+    loader.style.opacity = "0";
+    container.style.opacity = "1";
+    document.body.style.background = "#ffffff"
+    document.body.style.height = "fit-content"
+  }, 4000);
 });
 
-// Цей код виконається, коли ВЕСЬ контент сторінки (включаючи картинки та CSS) завантажиться
-window.addEventListener("load", () => {
-    const loader = document.getElementById(".loader");
-    const container = document.getElementById(".container");
 
-    // Перевірка, чи існують елементи
-    if (loader) {
-        // Приховуємо завантажувач
-        loader.style.display = "none";
-    }
 
-    if (container) {
-        // Показуємо основний вміст
-        container.style.display = "block";
-    }
-});
+
+console.clear()
+const s = document.querySelector(".sec")
+const m = document.querySelector(".min")
+const h = document.querySelector(".hour")
+setInterval(()=>{
+  const now = new Date()
+  const sec = now.getSeconds()
+  const min = now.getMinutes()
+  const hour = now.getHours()
+
+ s.style.transform = `rotate(${sec * 6}deg)`  
+ m.style.transform = `rotate(${min * 6 + sec * 0.1}deg)`  
+ h.style.transform = `rotate(${hour * 30 + min * 0.5}deg)`
+ 
+ 
+ console.log(sec, min, hour)
+ 
+  
+},1000)          
+
